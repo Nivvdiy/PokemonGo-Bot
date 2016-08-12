@@ -481,12 +481,486 @@ namespace PokemonGo.RocketAPI.Logic.Utils
             return GerName;
         }
 
+        public static string getPokemonNameFr(PokemonId b)
+        {
+            string FrName = string.Empty;
+            switch(b)
+            {
+                case PokemonId.Missingno:
+                    FrName = "Missingno";
+                    break;
+                case PokemonId.Bulbasaur:
+                    FrName = "Bulbizarre";
+                    break;
+                case PokemonId.Ivysaur:
+                    FrName = "Herbizarre";
+                    break;
+                case PokemonId.Venusaur:
+                    FrName = "Florizarre";
+                    break;
+                case PokemonId.Charmander:
+                    FrName = "Salameche";
+                    break;
+                case PokemonId.Charmeleon:
+                    FrName = "Reptincel";
+                    break;
+                case PokemonId.Charizard:
+                    FrName = "Dracaufeu";
+                    break;
+                case PokemonId.Squirtle:
+                    FrName = "Carapuce";
+                    break;
+                case PokemonId.Wartortle:
+                    FrName = "Carabaffe";
+                    break;
+                case PokemonId.Blastoise:
+                    FrName = "Tortank";
+                    break;
+                case PokemonId.Caterpie:
+                    FrName = "Chenipan";
+                    break;
+                case PokemonId.Metapod:
+                    FrName = "Chrysacier";
+                    break;
+                case PokemonId.Butterfree:
+                    FrName = "Papilusion";
+                    break;
+                case PokemonId.Weedle:
+                    FrName = "Aspicot";
+                    break;
+                case PokemonId.Kakuna:
+                    FrName = "Coconfort";
+                    break;
+                case PokemonId.Beedrill:
+                    FrName = "Dardargnan";
+                    break;
+                case PokemonId.Pidgey:
+                    FrName = "Roucool";
+                    break;
+                case PokemonId.Pidgeotto:
+                    FrName = "Roucoups";
+                    break;
+                case PokemonId.Pidgeot:
+                    FrName = "Roucarnage";
+                    break;
+                case PokemonId.Rattata:
+                    FrName = "Rattata";
+                    break;
+                case PokemonId.Raticate:
+                    FrName = "Rattatac";
+                    break;
+                case PokemonId.Spearow:
+                    FrName = "Piafabec";
+                    break;
+                case PokemonId.Fearow:
+                    FrName = "Rapasdepic";
+                    break;
+                case PokemonId.Ekans:
+                    FrName = "Abo";
+                    break;
+                case PokemonId.Arbok:
+                    FrName = "Arbok";
+                    break;
+                case PokemonId.Pikachu:
+                    FrName = "Pikachu";
+                    break;
+                case PokemonId.Raichu:
+                    FrName = "Raichu";
+                    break;
+                case PokemonId.Sandshrew:
+                    FrName = "Sabelette";
+                    break;
+                case PokemonId.Sandslash:
+                    FrName = "Sablaireau";
+                    break;
+                case PokemonId.NidoranFemale:
+                    FrName = "Nidoran femelle";
+                    break;
+                case PokemonId.Nidorina:
+                    FrName = "Nidorina";
+                    break;
+                case PokemonId.Nidoqueen:
+                    FrName = "Nidoqueen";
+                    break;
+                case PokemonId.NidoranMale:
+                    FrName = "Nidoran male";
+                    break;
+                case PokemonId.Nidorino:
+                    FrName = "Nidorino";
+                    break;
+                case PokemonId.Nidoking:
+                    FrName = "Nidoking";
+                    break;
+                case PokemonId.Clefairy:
+                    FrName = "Melofee";
+                    break;
+                case PokemonId.Clefable:
+                    FrName = "Melodelfe";
+                    break;
+                case PokemonId.Vulpix:
+                    FrName = "Goupix";
+                    break;
+                case PokemonId.Ninetales:
+                    FrName = "Feunard";
+                    break;
+                case PokemonId.Jigglypuff:
+                    FrName = "Rondoudou";
+                    break;
+                case PokemonId.Wigglytuff:
+                    FrName = "Grodoudou";
+                    break;
+                case PokemonId.Zubat:
+                    FrName = "Nosferapti";
+                    break;
+                case PokemonId.Golbat:
+                    FrName = "Nosferalto";
+                    break;
+                case PokemonId.Oddish:
+                    FrName = "Mystherbe";
+                    break;
+                case PokemonId.Gloom:
+                    FrName = "Ortide";
+                    break;
+                case PokemonId.Vileplume:
+                    FrName = "Rafflesia";
+                    break;
+                case PokemonId.Paras:
+                    FrName = "Paras";
+                    break;
+                case PokemonId.Parasect:
+                    FrName = "Parasect";
+                    break;
+                case PokemonId.Venonat:
+                    FrName = "Mimitoss";
+                    break;
+                case PokemonId.Venomoth:
+                    FrName = "Aeromite";
+                    break;
+                case PokemonId.Diglett:
+                    FrName = "Taupiqueur";
+                    break;
+                case PokemonId.Dugtrio:
+                    FrName = "Triopikeur";
+                    break;
+                case PokemonId.Meowth:
+                    FrName = "Miaouss";
+                    break;
+                case PokemonId.Persian:
+                    FrName = "Persian";
+                    break;
+                case PokemonId.Psyduck:
+                    FrName = "Psykokwak";
+                    break;
+                case PokemonId.Golduck:
+                    FrName = "Akwakwak";
+                    break;
+                case PokemonId.Mankey:
+                    FrName = "Ferosinge";
+                    break;
+                case PokemonId.Primeape:
+                    FrName = "Colossinge";
+                    break;
+                case PokemonId.Growlithe:
+                    FrName = "Caninos";
+                    break;
+                case PokemonId.Arcanine:
+                    FrName = "Arcanin";
+                    break;
+                case PokemonId.Poliwag:
+                    FrName = "Ptitard";
+                    break;
+                case PokemonId.Poliwhirl:
+                    FrName = "Tetarte";
+                    break;
+                case PokemonId.Poliwrath:
+                    FrName = "Tartard";
+                    break;
+                case PokemonId.Abra:
+                    FrName = "Abra";
+                    break;
+                case PokemonId.Kadabra:
+                    FrName = "Kadabra";
+                    break;
+                case PokemonId.Alakazam:
+                    FrName = "Alakazam";
+                    break;
+                case PokemonId.Machop:
+                    FrName = "Machoc";
+                    break;
+                case PokemonId.Machoke:
+                    FrName = "Machopeur";
+                    break;
+                case PokemonId.Machamp:
+                    FrName = "Mackogneur";
+                    break;
+                case PokemonId.Bellsprout:
+                    FrName = "Chetiflor";
+                    break;
+                case PokemonId.Weepinbell:
+                    FrName = "Boustiflor";
+                    break;
+                case PokemonId.Victreebel:
+                    FrName = "Empiflor";
+                    break;
+                case PokemonId.Tentacool:
+                    FrName = "Tentacool";
+                    break;
+                case PokemonId.Tentacruel:
+                    FrName = "Tentacruel";
+                    break;
+                case PokemonId.Geodude:
+                    FrName = "Racaillou";
+                    break;
+                case PokemonId.Graveler:
+                    FrName = "Gravalanche";
+                    break;
+                case PokemonId.Golem:
+                    FrName = "Grolem";
+                    break;
+                case PokemonId.Ponyta:
+                    FrName = "Ponyta";
+                    break;
+                case PokemonId.Rapidash:
+                    FrName = "Galopa";
+                    break;
+                case PokemonId.Slowpoke:
+                    FrName = "Ramoloss";
+                    break;
+                case PokemonId.Slowbro:
+                    FrName = "Flagadoss";
+                    break;
+                case PokemonId.Magnemite:
+                    FrName = "Magneti";
+                    break;
+                case PokemonId.Magneton:
+                    FrName = "Magneton";
+                    break;
+                case PokemonId.Farfetchd:
+                    FrName = "Canarticho";
+                    break;
+                case PokemonId.Doduo:
+                    FrName = "Doduo";
+                    break;
+                case PokemonId.Dodrio:
+                    FrName = "Dodrio";
+                    break;
+                case PokemonId.Seel:
+                    FrName = "Otaria";
+                    break;
+                case PokemonId.Dewgong:
+                    FrName = "Lamantine";
+                    break;
+                case PokemonId.Grimer:
+                    FrName = "Tadmorv";
+                    break;
+                case PokemonId.Muk:
+                    FrName = "Grotadmorv";
+                    break;
+                case PokemonId.Shellder:
+                    FrName = "Kokiyas";
+                    break;
+                case PokemonId.Cloyster:
+                    FrName = "Crustabri";
+                    break;
+                case PokemonId.Gastly:
+                    FrName = "Fantominus";
+                    break;
+                case PokemonId.Haunter:
+                    FrName = "Spectrum";
+                    break;
+                case PokemonId.Gengar:
+                    FrName = "Ectoplasma";
+                    break;
+                case PokemonId.Onix:
+                    FrName = "Onix";
+                    break;
+                case PokemonId.Drowzee:
+                    FrName = "Soporifik";
+                    break;
+                case PokemonId.Hypno:
+                    FrName = "Hypnomade";
+                    break;
+                case PokemonId.Krabby:
+                    FrName = "Krabby";
+                    break;
+                case PokemonId.Kingler:
+                    FrName = "Kraboss";
+                    break;
+                case PokemonId.Voltorb:
+                    FrName = "Voltorbe";
+                    break;
+                case PokemonId.Electrode:
+                    FrName = "Electrode";
+                    break;
+                case PokemonId.Exeggcute:
+                    FrName = "Noeunoeuf";
+                    break;
+                case PokemonId.Exeggutor:
+                    FrName = "Noadkoko";
+                    break;
+                case PokemonId.Cubone:
+                    FrName = "Osselait";
+                    break;
+                case PokemonId.Marowak:
+                    FrName = "Ossatueur";
+                    break;
+                case PokemonId.Hitmonlee:
+                    FrName = "Kicklee";
+                    break;
+                case PokemonId.Hitmonchan:
+                    FrName = "Tygnon";
+                    break;
+                case PokemonId.Lickitung:
+                    FrName = "Excelangue";
+                    break;
+                case PokemonId.Koffing:
+                    FrName = "Smogo";
+                    break;
+                case PokemonId.Weezing:
+                    FrName = "Smogogo";
+                    break;
+                case PokemonId.Rhyhorn:
+                    FrName = "Rhinocorne";
+                    break;
+                case PokemonId.Rhydon:
+                    FrName = "Rhinoferos";
+                    break;
+                case PokemonId.Chansey:
+                    FrName = "Leveinard";
+                    break;
+                case PokemonId.Tangela:
+                    FrName = "Saquedeneu";
+                    break;
+                case PokemonId.Kangaskhan:
+                    FrName = "Kangourex";
+                    break;
+                case PokemonId.Horsea:
+                    FrName = "Hypotrempe";
+                    break;
+                case PokemonId.Seadra:
+                    FrName = "Hypocean";
+                    break;
+                case PokemonId.Goldeen:
+                    FrName = "Poissirene";
+                    break;
+                case PokemonId.Seaking:
+                    FrName = "Poissoroy";
+                    break;
+                case PokemonId.Staryu:
+                    FrName = "Stari";
+                    break;
+                case PokemonId.Starmie:
+                    FrName = "Staross";
+                    break;
+                case PokemonId.MrMime:
+                    FrName = "M.Mime";
+                    break;
+                case PokemonId.Scyther:
+                    FrName = "Insecateur";
+                    break;
+                case PokemonId.Jynx:
+                    FrName = "Lippoutou";
+                    break;
+                case PokemonId.Electabuzz:
+                    FrName = "Elektek";
+                    break;
+                case PokemonId.Magmar:
+                    FrName = "Magmar";
+                    break;
+                case PokemonId.Pinsir:
+                    FrName = "Scarabrute";
+                    break;
+                case PokemonId.Tauros:
+                    FrName = "Tauros";
+                    break;
+                case PokemonId.Magikarp:
+                    FrName = "Magicarpe";
+                    break;
+                case PokemonId.Gyarados:
+                    FrName = "Leviator";
+                    break;
+                case PokemonId.Lapras:
+                    FrName = "Lokhlass";
+                    break;
+                case PokemonId.Ditto:
+                    FrName = "Metamorph";
+                    break;
+                case PokemonId.Eevee:
+                    FrName = "Evoli";
+                    break;
+                case PokemonId.Vaporeon:
+                    FrName = "Aquali";
+                    break;
+                case PokemonId.Jolteon:
+                    FrName = "Voltali";
+                    break;
+                case PokemonId.Flareon:
+                    FrName = "Pyroli";
+                    break;
+                case PokemonId.Porygon:
+                    FrName = "Porygon";
+                    break;
+                case PokemonId.Omanyte:
+                    FrName = "Amonita";
+                    break;
+                case PokemonId.Omastar:
+                    FrName = "Amonistar";
+                    break;
+                case PokemonId.Kabuto:
+                    FrName = "Kabuto";
+                    break;
+                case PokemonId.Kabutops:
+                    FrName = "Kabutops";
+                    break;
+                case PokemonId.Aerodactyl:
+                    FrName = "Ptera";
+                    break;
+                case PokemonId.Snorlax:
+                    FrName = "Ronflex";
+                    break;
+                case PokemonId.Articuno:
+                    FrName = "Artikodin";
+                    break;
+                case PokemonId.Zapdos:
+                    FrName = "Electhor";
+                    break;
+                case PokemonId.Moltres:
+                    FrName = "Sulfura";
+                    break;
+                case PokemonId.Dratini:
+                    FrName = "Minidraco";
+                    break;
+                case PokemonId.Dragonair:
+                    FrName = "Draco";
+                    break;
+                case PokemonId.Dragonite:
+                    FrName = "Dracolosse";
+                    break;
+                case PokemonId.Mewtwo:
+                    FrName = "Mewtwo";
+                    break;
+                case PokemonId.Mew:
+                    FrName = "Mew";
+                    break;
+                default:
+                    FrName = "Unknown Pokemon";
+                    break;
+
+            }
+            return FrName;
+        }
+
         public static string getPokemonNameByLanguage(ISettings clientSettings, PokemonId b)
         {
-            if (clientSettings.Language)
+            if(clientSettings.Language && !clientSettings.LanguageFr)
             {
                 return getPokemonNameGer(b);
-                        
+
+            }
+            else if(!clientSettings.Language && clientSettings.LanguageFr)
+            {
+                return getPokemonNameFr(b);
+
             }
             else
             {

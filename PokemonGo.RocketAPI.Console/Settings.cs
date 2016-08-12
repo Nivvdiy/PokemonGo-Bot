@@ -58,6 +58,7 @@ namespace PokemonGo.RocketAPI.Console
         public bool UseLuckyEggIfNotRunning => Globals.useLuckyEggIfNotRunning;
 
         public bool Language => Globals.gerNames;
+        public bool LanguageFr => Globals.frNames;
 
         public string SelectedLanguage => Globals.settingsLanguage;
         /*

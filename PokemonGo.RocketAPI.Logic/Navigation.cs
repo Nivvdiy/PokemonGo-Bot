@@ -25,7 +25,7 @@ namespace PokemonGo.RocketAPI.Logic
             double d = 2 * r_earth * Math.Atan2(Math.Sqrt(alpha), Math.Sqrt(1 - alpha));
             return d;
         }
-        
+
         private readonly Client _client;
         private const double SpeedDownTo = 10 / 3.6;
         private static readonly Random RandomDevice = new Random();
@@ -37,15 +37,15 @@ namespace PokemonGo.RocketAPI.Logic
 
         public async Task<PlayerUpdateResponse> HumanLikeWalking(GeoCoordinate targetLocation,
         double walkingSpeedInKilometersPerHour, Func<Task> functionExecutedWhileWalking)
-        { 
+        {
             var randomFactor = 0.5f;
-            var randomMin = (int)(walkingSpeedInKilometersPerHour * (1 - randomFactor));
-            var randomMax = (int)(walkingSpeedInKilometersPerHour * (1 + randomFactor));
+            var randomMin = (int) (walkingSpeedInKilometersPerHour * (1 - randomFactor));
+            var randomMax = (int) (walkingSpeedInKilometersPerHour * (1 + randomFactor));
             var RandomWalkSpeed = RandomDevice.Next(randomMin, randomMax);
             walkingSpeedInKilometersPerHour = RandomWalkSpeed;
 
             var speedInMetersPerSecond = walkingSpeedInKilometersPerHour / 3.6;
-        
+
             var sourceLocation = new GeoCoordinate(_client.CurrentLatitude, _client.CurrentLongitude);
             var distanceToTarget = LocationUtils.CalculateDistanceInMeters(sourceLocation, targetLocation);
             Logger.ColoredConsoleWrite(ConsoleColor.DarkCyan, $"Distance to target location: {distanceToTarget:0.##} meters. Will take {distanceToTarget / speedInMetersPerSecond:0.##} seconds!");
@@ -53,14 +53,14 @@ namespace PokemonGo.RocketAPI.Logic
             var nextWaypointBearing = LocationUtils.DegreeBearing(sourceLocation, targetLocation);
             var nextWaypointDistance = speedInMetersPerSecond;
             var waypoint = LocationUtils.CreateWaypoint(sourceLocation, nextWaypointDistance, nextWaypointBearing);
-             
+
             //Initial walking
             var requestSendDateTime = DateTime.Now;
             var result =
                 await
                     _client.Player.UpdatePlayerLocation(waypoint.Latitude, waypoint.Longitude, waypoint.Altitude);
 
-            if (functionExecutedWhileWalking != null)
+            if(functionExecutedWhileWalking != null)
                 await functionExecutedWhileWalking();
 
             var locatePokemonWhileWalkingDateTime = DateTime.Now;
@@ -72,9 +72,9 @@ namespace PokemonGo.RocketAPI.Logic
                 sourceLocation = new GeoCoordinate(_client.CurrentLatitude, _client.CurrentLongitude);
                 var currentDistanceToTarget = LocationUtils.CalculateDistanceInMeters(sourceLocation, targetLocation);
 
-                if (currentDistanceToTarget < 40)
+                if(currentDistanceToTarget < 40)
                 {
-                    if (speedInMetersPerSecond > SpeedDownTo)
+                    if(speedInMetersPerSecond > SpeedDownTo)
                     {
                         Logger.ColoredConsoleWrite(ConsoleColor.DarkCyan, $"We are within 40 meters of the target. Slowing down to ~10 km/h to not pass the target.");
                         speedInMetersPerSecond = SpeedDownTo;
@@ -84,28 +84,28 @@ namespace PokemonGo.RocketAPI.Logic
                 nextWaypointDistance = Math.Min(currentDistanceToTarget, millisecondsUntilGetUpdatePlayerLocationResponse / 1000 * speedInMetersPerSecond);
                 nextWaypointBearing = LocationUtils.DegreeBearing(sourceLocation, targetLocation);
                 waypoint = LocationUtils.CreateWaypoint(sourceLocation, nextWaypointDistance, nextWaypointBearing);
-   
+
                 requestSendDateTime = DateTime.Now;
 
                 result =
                     await
                         _client.Player.UpdatePlayerLocation(waypoint.Latitude, waypoint.Longitude,
                             waypoint.Altitude);
-                if (functionExecutedWhileWalking != null)
+                if(functionExecutedWhileWalking != null)
                     await functionExecutedWhileWalking();// look for pokemon 
 
                 await RandomHelper.RandomDelay(500, 600);
-            } while (LocationUtils.CalculateDistanceInMeters(sourceLocation, targetLocation) >= 30);
+            } while(LocationUtils.CalculateDistanceInMeters(sourceLocation, targetLocation) >= 30);
             return result;
         }
 
         private double calcTime(ref FortData[] pokeStops, List<int> _chromosome, double walkingSpeedInKilometersPerHour)
         {
             double time = 0.0;
-            for (int i = 0; i < _chromosome.Count - 1; ++i)
+            for(int i = 0; i < _chromosome.Count - 1; ++i)
             {
                 double distance = DistanceBetween2Coordinates(pokeStops[_chromosome[i]].Latitude, pokeStops[_chromosome[i]].Longitude, pokeStops[_chromosome[i + 1]].Latitude, pokeStops[_chromosome[i + 1]].Longitude);
-                if (distance <= 40)
+                if(distance <= 40)
                 {
                     time += distance / Logic.SpeedDownTo;
                 }
@@ -118,14 +118,15 @@ namespace PokemonGo.RocketAPI.Logic
         }
         private int calcFitness(ref FortData[] pokeStops, List<int> _chromosome, double walkingSpeedInKilometersPerHour)
         {
-            if (_chromosome.Count <= 2) return 0;
+            if(_chromosome.Count <= 2)
+                return 0;
 
             double time = 0.0;
             double length = 0.0;
-            for (int i = 0; i < _chromosome.Count - 1; ++i)
+            for(int i = 0; i < _chromosome.Count - 1; ++i)
             {
                 double distance = DistanceBetween2Coordinates(pokeStops[_chromosome[i]].Latitude, pokeStops[_chromosome[i]].Longitude, pokeStops[_chromosome[i + 1]].Latitude, pokeStops[_chromosome[i + 1]].Longitude);
-                if (distance <= 40)
+                if(distance <= 40)
                 {
                     time += distance / Logic.SpeedDownTo;
                 }
@@ -136,12 +137,14 @@ namespace PokemonGo.RocketAPI.Logic
                 length += distance;
             }
 
-            if (time <= 380 || !(time > 0.0)) return 0;
+            if(time <= 380 || !(time > 0.0))
+                return 0;
 
-            if (_client.Settings.navigation_option == 1)
+            if(_client.Settings.navigation_option == 1)
             {
                 return Convert.ToInt32((_chromosome.Count * 10000) / time);
-            } else
+            }
+            else
             {
                 return Convert.ToInt32(_chromosome.Count * length / time);
             }
@@ -150,16 +153,17 @@ namespace PokemonGo.RocketAPI.Logic
         {
             List<int> child = new List<int>(_chromosome1);
 
-            if (child.Count <= 3) return child;
+            if(child.Count <= 3)
+                return child;
 
             Random rnd = new Random();
             int p = rnd.Next(1, child.Count - 2);
-            for (; p < child.Count - 1; ++p)
+            for(; p < child.Count - 1; ++p)
             {
-                for (int i = 0; i < _chromosome2.Count; ++i)
+                for(int i = 0; i < _chromosome2.Count; ++i)
                 {
                     var tempIndex = child.FindIndex(x => x == _chromosome2[i]);
-                    if (tempIndex > p || tempIndex < 0)
+                    if(tempIndex > p || tempIndex < 0)
                     {
                         child[p] = _chromosome2[i];
                         break;
@@ -184,7 +188,7 @@ namespace PokemonGo.RocketAPI.Logic
             int sumPop = 0;
             List<int> fittnes = new List<int>();
 
-            for (int c = 0; c < population.Count; ++c)
+            for(int c = 0; c < population.Count; ++c)
             {
                 var temp = calcFitness(ref pokeStops, population[c], walkingSpeedInKilometersPerHour);
                 sumPop += temp;
@@ -193,7 +197,8 @@ namespace PokemonGo.RocketAPI.Logic
             List<int> fittnesSorted = new List<int>(fittnes);
             fittnesSorted.Sort();
 
-            if (sumPop < 2) return listSelection;
+            if(sumPop < 2)
+                return listSelection;
 
             Random rnd = new Random();
             int selcetedChr = -1;
@@ -201,13 +206,13 @@ namespace PokemonGo.RocketAPI.Logic
             {
                 var tempIndex = rnd.Next(0, sumPop);
                 int tempSumPop = 0;
-                for (int c = fittnesSorted.Count - 1; c > 0; --c)
+                for(int c = fittnesSorted.Count - 1; c > 0; --c)
                 {
                     tempSumPop += fittnesSorted[c];
-                    if (tempSumPop > tempIndex)
+                    if(tempSumPop > tempIndex)
                     {
                         var tempSelcetedChr = fittnes.FindIndex(x => x == fittnesSorted[c]);
-                        if (tempSelcetedChr != selcetedChr && !(tempSelcetedChr < 0))
+                        if(tempSelcetedChr != selcetedChr && !(tempSelcetedChr < 0))
                         {
                             selcetedChr = tempSelcetedChr;
                             listSelection.Add(population[selcetedChr]);
@@ -216,13 +221,13 @@ namespace PokemonGo.RocketAPI.Logic
                     }
 
                 }
-            } while (listSelection.Count < 2);
+            } while(listSelection.Count < 2);
 
 
 
             return listSelection;
         }
-        
+
 
         public FortData[] pathByNearestNeighbour(FortData[] pokeStops, double walkingSpeedInKilometersPerHour)
         {
@@ -331,15 +336,15 @@ namespace PokemonGo.RocketAPI.Logic
             //End gen. alg
 
             //Normal calculation
-            for (var i = 1; i < pokeStops.Length - 1; i++)
+            for(var i = 1; i < pokeStops.Length - 1; i++)
             {
                 var closest = i + 1;
                 var cloestDist = LocationUtils.CalculateDistanceInMeters(pokeStops[i].Latitude, pokeStops[i].Longitude, pokeStops[closest].Latitude, pokeStops[closest].Longitude);
-                for (var j = closest; j < pokeStops.Length; j++)
+                for(var j = closest; j < pokeStops.Length; j++)
                 {
                     var initialDist = cloestDist;
                     var newDist = LocationUtils.CalculateDistanceInMeters(pokeStops[i].Latitude, pokeStops[i].Longitude, pokeStops[j].Latitude, pokeStops[j].Longitude);
-                    if (initialDist > newDist)
+                    if(initialDist > newDist)
                     {
                         cloestDist = newDist;
                         closest = j;

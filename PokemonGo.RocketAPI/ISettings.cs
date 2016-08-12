@@ -52,6 +52,7 @@ namespace PokemonGo.RocketAPI
         bool pokevision { get; }
 
         bool Language { get; }
+        bool LanguageFr { get; }
 
 
         //Proxies

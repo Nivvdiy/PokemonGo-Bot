@@ -56,6 +56,7 @@ namespace PokemonGo.RocketAPI.Console
                     if (pokemon.ToString() != "Missingno")
                     {
                         GUI.gerEng[StringUtils.getPokemonNameGer(pokemon)] = pokemon.ToString();
+                        GUI.frEng[StringUtils.getPokemonNameFr(pokemon)] = pokemon.ToString();
                     }
                 }
                 int i = 0;
@@ -140,33 +141,36 @@ namespace PokemonGo.RocketAPI.Console
                                     Globals.gerNames = bool.Parse(line);
                                     break;
                                 case 19:
-                                    Globals.useincense = bool.Parse(line);
+                                    Globals.frNames = bool.Parse(line);
                                     break;
                                 case 20:
-                                    Globals.ivmaxpercent = int.Parse(line);
+                                    Globals.useincense = bool.Parse(line);
                                     break;
                                 case 21:
-                                    Globals.pokeList = bool.Parse(line);
+                                    Globals.ivmaxpercent = int.Parse(line);
                                     break;
                                 case 22:
-                                    Globals.keepPokemonsThatCanEvolve = bool.Parse(line);
+                                    Globals.pokeList = bool.Parse(line);
                                     break;
                                 case 23:
-                                    Globals.pokevision = bool.Parse(line);
+                                    Globals.keepPokemonsThatCanEvolve = bool.Parse(line);
                                     break;
                                 case 24:
-                                    Globals.useluckyegg = bool.Parse(line);
+                                    Globals.pokevision = bool.Parse(line);
                                     break;
                                 case 25:
-                                    Globals.autoIncubate = bool.Parse(line);
+                                    Globals.useluckyegg = bool.Parse(line);
                                     break;
                                 case 26:
-                                    Globals.useBasicIncubators = bool.Parse(line);
+                                    Globals.autoIncubate = bool.Parse(line);
                                     break;
                                 case 27:
+                                    Globals.useBasicIncubators = bool.Parse(line);
+                                    break;
+                                case 28:
                                     Globals.TransferFirstLowIV = bool.Parse(line);
                                     break;
-                                //case 28:
+                                //case 29:
                                 //    Globals.userazzberry = bool.Parse(line);
                                 //    break;
                             }
@@ -241,6 +245,8 @@ namespace PokemonGo.RocketAPI.Console
                         if (line != string.Empty)
                             if (Globals.gerNames)
                                 Globals.noTransfer.Add((PokemonId)Enum.Parse(typeof(PokemonId), GUI.gerEng[line]));
+                            else if(Globals.frNames)
+                                Globals.noTransfer.Add((PokemonId) Enum.Parse(typeof(PokemonId), GUI.frEng[line]));
                             else
                                 Globals.noTransfer.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
                     }
@@ -254,6 +260,8 @@ namespace PokemonGo.RocketAPI.Console
                         if (line != string.Empty)
                             if (Globals.gerNames)
                                 Globals.noCatch.Add((PokemonId)Enum.Parse(typeof(PokemonId), GUI.gerEng[line]));
+                            else if(Globals.frNames)
+                                Globals.noCatch.Add((PokemonId) Enum.Parse(typeof(PokemonId), GUI.frEng[line]));
                             else
                                 Globals.noCatch.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
                     }
@@ -267,6 +275,8 @@ namespace PokemonGo.RocketAPI.Console
                         if (line != string.Empty)
                             if (Globals.gerNames)
                                 Globals.doEvolve.Add((PokemonId)Enum.Parse(typeof(PokemonId), GUI.gerEng[line]));
+                            else if(Globals.frNames)
+                                Globals.doEvolve.Add((PokemonId) Enum.Parse(typeof(PokemonId), GUI.frEng[line]));
                             else
                                 Globals.doEvolve.Add((PokemonId)Enum.Parse(typeof(PokemonId), line));
                     }
@@ -434,6 +444,7 @@ namespace PokemonGo.RocketAPI.Console
         public static bool userazzberry = true;
         public static double razzberry_chance = 0.35;
         public static bool gerNames = false;
+        public static bool frNames = false;
         public static bool pokeList = true;
         public static bool keepPokemonsThatCanEvolve = true;
         public static bool TransferFirstLowIV = true;
